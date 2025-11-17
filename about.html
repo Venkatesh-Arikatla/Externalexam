@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Venkatesh Arikatla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #0a192f;
+            --secondary: #64ffda;
+            --accent: #e63946;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --dark-bg: #112240;
+            --light-bg: #233554;
+            --card-bg: rgba(17, 34, 64, 0.7);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --border-radius: 4px;
+            --box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            --header-height: 70px;
+        }
+        
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4fd3b6;
+        }
+        
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0 40px;
+        }
+        
+        /* Contact page underline effect */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 50px;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Mobile-first layout */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .about-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 4rem;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 5px 20px -10px rgba(2, 12, 27, 0.7);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+        
+        .logo span {
+            color: var(--text-primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            background: rgba(17, 34, 64, 0.8);
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(2, 12, 27, 0.5);
+        }
+        
+        .nav-links li {
+            margin: 0 5px;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 30px;
+            position: relative;
+            display: block;
+        }
+        
+        /* Remove underline for all navigation items */
+        .nav-links a::after {
+            display: none;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+            background: rgba(100, 255, 218, 0.1);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+            background: var(--secondary);
+            box-shadow: 0 2px 10px rgba(100, 255, 218, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* ===== FLOATING ELEMENTS ===== */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(100, 255, 218, 0.03);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(100px, 100px) rotate(360deg);
+            }
+        }
+        
+        /* ===== LOADING ANIMATION ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(100, 255, 218, 0.3);
+            border-top: 3px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ===== PARTICLE BACKGROUND ===== */
+        .particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 1024px) {
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .nav-links a {
+                font-size: 0.75rem;
+                padding: 8px 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 60px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .about-section {
+                padding: 70px 0 30px;
+                min-height: calc(100vh - 70px);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 1000;
+                border-radius: 0;
+                padding: 20px;
+                box-shadow: none;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Adjusted mobile navigation size */
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+                border-radius: 10px;
+                width: 100%;
+                display: block;
+            }
+            
+            .nav-links a:hover {
+                background: rgba(100, 255, 218, 0.1);
+            }
+            
+            .about-text {
+                font-size: 0.95rem;
+                padding: 20px;
+            }
+            
+            .image-placeholder {
+                height: 250px;
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-section {
+                padding: 60px 0 20px;
+            }
+            
+            .about-content {
+                gap: 30px;
+            }
+            
+            .image-placeholder {
+                height: 200px;
+                font-size: 2.5rem;
+            }
+            
+            .about-text p {
+                margin-bottom: 15px;
+            }
+            
+            /* Further adjust mobile navigation for very small screens */
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 0.7rem 0.9rem;
+            }
+        }
+
+        /* Tablet and larger screens */
+        @media (min-width: 769px) {
+            .about-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 50px;
+                align-items: center;
+                text-align: left;
+            }
+            
+            .image-placeholder {
+                height: 400px;
+                font-size: 5rem;
+            }
+        }
+
+        /* Prevent horizontal scroll on mobile */
+        @media (max-width: 400px) {
+            html, body {
+                overflow-x: hidden;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen hidden" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js" class="particles-js"></div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">V<span>A</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Motivated and detail-oriented cybersecurity professional seeking to leverage strong technical skills and problem-solving abilities in a challenging security role. Passionate about creating efficient, scalable security solutions and eager to contribute to innovative projects while continuing to grow and expand my expertise in modern security technologies.</p>
+                    <p>With a background in both commerce and computer applications, I bring a unique perspective to cybersecurity challenges, combining analytical thinking with technical expertise to identify and mitigate digital threats effectively.</p>
+                    <p>My journey in cybersecurity began with a fascination for how systems can be protected from malicious actors. This interest has evolved into a dedicated pursuit of knowledge and skills in network security, vulnerability assessment, and ethical hacking.</p>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Loading screen is hidden by default for zero loading time
+
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const header = document.getElementById('header');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = isActive 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+                
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = isActive ? 'hidden' : '';
+            });
+
+            // Close mobile menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Add floating elements dynamically
+            const floatingContainer = document.getElementById('floatingElements');
+            // Fewer elements on mobile for better performance
+            const elementCount = window.innerWidth < 768 ? 6 : 12;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                const size = Math.random() * 80 + 30;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.animationDuration = `${Math.random() * 30 + 20}s`;
+                floatingContainer.appendChild(element);
+            }
+
+            // Initialize particles.js with mobile-optimized settings
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: window.innerWidth < 768 ? 40 : 80,
+                            density: {
+                                enable: true,
+                                value_area: window.innerWidth < 768 ? 400 : 800
+                            }
+                        },
+                        color: {
+                            value: '#64ffda'
+                        },
+                        shape: {
+                            type: 'circle',
+                            stroke: {
+                                width: 0,
+                                color: '#000000'
+                            }
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 1,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: window.innerWidth < 768 ? 2 : 3,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: window.innerWidth < 768 ? false : true,
+                            distance: 150,
+                            color: '#64ffda',
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: window.innerWidth < 768 ? 0.5 : 1,
+                            direction: 'none',
+                            random: true,
+                            straight: false,
+                            out_mode: 'out',
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: {
+                            onhover: {
+                                enable: window.innerWidth < 768 ? false : true,
+                                mode: 'grab'
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: 'push'
+                            },
+                            resize: true
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                line_linked: {
+                                    opacity: 0.5
+                                }
+                            },
+                            push: {
+                                particles_nb: 4
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Update particles if needed
+                    if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+                        window.pJSDom[0].pJS.fn.vendors.destroy();
+                        window.pJSDom[0].pJS.fn.vendors.start();
+                    }
+                }, 250);
+            });
+
+            // Touch event improvements for mobile
+            document.addEventListener('touchstart', function() {}, {passive: true});
+        });
+
+        // Prevent zoom on double tap (iOS)
+        document.addEventListener('touchend', function (e) {
+            if (e.touches && e.touches.length < 2) {
+                return;
+            }
+            e.preventDefault();
+        }, false);
+    </script>
+</body>
+</html>
